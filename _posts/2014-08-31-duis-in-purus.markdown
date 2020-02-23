@@ -1,14 +1,64 @@
 ---
 layout: post
-title:  "Duis in purus"
-date:   2014-09-07 14:36:23
-categories: Duis
+title:  "Pacific Atlantic Water Flow"
+date:   2020-01-07 14:36:23
+categories: problems
 ---
-<span class="image featured"><img src="/images/pic01.jpg" alt=""></span>
-Duis in purus sit amet elit ullamcorper venenatis vel a diam. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec dictum quam id ultricies dapibus. Donec rutrum pellentesque nisl, in bibendum erat imperdiet et. Maecenas eros lorem, dignissim in eros ut, consequat eleifend ante. Duis leo tortor, porttitor non ex ut, varius consectetur purus. Mauris vel erat risus. Nam convallis, lorem et tempus efficitur, nulla tortor efficitur sapien, ut pretium nisl turpis at purus. Nulla dui risus, suscipit nec tellus ac, aliquam finibus mi. Suspendisse accumsan, nisl a aliquet hendrerit, massa metus volutpat libero, et mollis lectus mauris et justo. Ut vitae est ut ligula sollicitudin blandit. Quisque egestas eleifend tortor, in finibus ex. Donec non orci quis odio porttitor mattis.
+<span class="image featured"><img src="/images/atlantic_ocean.png" alt=""></span>
+This is a [leetcode problem](https://leetcode.com/problems/pacific-atlantic-water-flow/).
 
-Duis ut blandit lorem. Suspendisse potenti. Donec maximus blandit neque dapibus hendrerit. Praesent dignissim turpis eu nisl varius tempor. Interdum et malesuada fames ac ante ipsum primis in faucibus. Curabitur in volutpat felis. Sed eget neque vel risus fermentum maximus a vel arcu. Vivamus non lorem mattis, vehicula metus eu, pellentesque mauris. Nunc fermentum efficitur justo, et rutrum mi finibus non. Sed vehicula eros id elit elementum rhoncus. Nullam quis tellus vitae metus eleifend pharetra eget interdum nulla. Integer sit amet imperdiet urna.
+A better displayed version can be found [here](https://github.com/Chandler-Qian/chandler-qian.github.io/blob/master/_posts/2014-08-31-duis-in-purus.markdown).
 
-Morbi a semper justo, non eleifend elit. Sed nulla nulla, porttitor nec volutpat eu, pulvinar vitae augue. Curabitur tempor quis lorem eget vestibulum. Aenean vel lacinia orci, ac sollicitudin felis. Nunc eros libero, posuere nec massa ac, consectetur sollicitudin elit. Duis tincidunt nunc et neque egestas rhoncus. Curabitur ut euismod lorem, ut rutrum neque. Nullam at sem eros. Nam interdum lectus non cursus viverra.
+## Problem Discription
 
-Duis eget magna at arcu tincidunt ultricies. Curabitur in facilisis sem, nec bibendum eros. Nunc fringilla imperdiet diam sed viverra. Vivamus lobortis dignissim mi. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi laoreet eu diam eu pellentesque. Duis tempus metus urna, vel faucibus ligula pharetra euismod. Donec rhoncus blandit posuere. Mauris mattis dolor est, dictum venenatis augue facilisis sit amet. Ut ante odio, congue eget arcu nec, semper eleifend urna. Donec rutrum pretium odio non pellentesque. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nullam pellentesque nulla at tincidunt ultrices. Donec finibus malesuada magna. Phasellus eget tortor in lectus vehicula viverra sit amet sit amet purus.
+
+Given an m x n matrix of non-negative integers representing the height of each unit cell in a continent, the "Pacific ocean" touches the left and top edges of the matrix and the "Atlantic ocean" touches the right and bottom edges.
+
+Water can only flow in four directions (up, down, left, or right) from a cell to another one with height equal or lower.
+
+Find the list of grid coordinates where water can flow to both the Pacific and Atlantic ocean.
+
+Note: The order of returned grid coordinates does not matter. Both m and n are less than 150.
+
+## My Solution
+View my posted solution [here]([https://leetcode.com/problems/pacific-atlantic-water-flow/discuss/510000/java-dfs-simple-solution](https://leetcode.com/problems/pacific-atlantic-water-flow/discuss/510000/java-dfs-simple-solution)).
+
+```
+class Solution {
+    private boolean[][] atlantic, pacific, visited;
+    private int M, N;
+    public List<List<Integer>> pacificAtlantic(int[][] matrix) {
+        List<List<Integer>> res = new ArrayList<>();
+        M = matrix.length;
+        if (M == 0) return res;
+        N = matrix[0].length;
+        atlantic = new boolean[M][N];
+        pacific = new boolean[M][N];
+        visited = new boolean[M][N];
+        dfs(pacific, matrix, 0, 0, 0, 0);
+        visited = new boolean[M][N];
+        dfs(atlantic, matrix, M - 1, N - 1, M - 1, N - 1);
+        for (int i = 0; i < M; i++) {
+            for (int j = 0; j < N; j++) {
+                if (atlantic[i][j] && pacific[i][j]) res.add(Arrays.asList(new Integer[]{i, j}));
+            }
+        }
+        return res;
+    }
+    
+    private void dfs(boolean[][] ocean, int[][] matrix, int i, int j, int i_border, int j_border) {
+        ocean[i][j] = true;
+        visited[i][j] = true;
+        if (i - 1 >= 0 && !visited[i - 1][j] && (i - 1 == i_border || j == j_border || matrix[i - 1][j] >= matrix[i][j]))
+            dfs(ocean, matrix, i - 1, j, i_border, j_border);
+        if (j - 1 >= 0 && !visited[i][j - 1] && (j - 1 == j_border || i == i_border || matrix[i][j - 1] >= matrix[i][j]))
+            dfs(ocean, matrix, i, j - 1, i_border, j_border);
+        if (i + 1 < M && !visited[i + 1][j] && (j == j_border || i + 1 == i_border || matrix[i + 1][j] >= matrix[i][j]))
+            dfs(ocean, matrix, i + 1, j, i_border, j_border);
+        if (j + 1 < N && !visited[i][j + 1] && (i == i_border || j + 1 == j_border || matrix[i][j + 1] >= matrix[i][j]))
+            dfs(ocean, matrix, i, j + 1, i_border, j_border);
+    }
+    
+}
+```
+ 

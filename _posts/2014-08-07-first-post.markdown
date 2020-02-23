@@ -3,6 +3,7 @@ layout: post
 title:  "Design Log Storage System"
 date:   2020-02-23 14:36:23
 permalink: /first-post.html
+categories: problems
 ---
 <span class="image featured"><img src="/images/file_system.jpg" alt=""></span>
 This is a [leetcode problem](https://leetcode.com/problems/design-log-storage-system/).
