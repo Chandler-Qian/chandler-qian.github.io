@@ -8,7 +8,7 @@ categories: problems
 <span class="image featured"><img src="/images/file_system.jpg" alt=""></span>
 This is a [leetcode problem](https://leetcode.com/problems/design-log-storage-system/).
 
-A better displayed version can be found [here](https://github.com/Chandler-Qian/chandler-qian.github.io/blob/master/_posts/2014-08-07-first-post.markdown).
+A better displayed version can be found [here](https://github.com/Chandler-Qian/chandler-qian.github.io/blob/master/_posts/2020-02-23-Design_log_storage_system.markdown).
 
 ## Problem Discription
 

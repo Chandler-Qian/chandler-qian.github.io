@@ -7,7 +7,7 @@ categories: problems
 <span class="image featured"><img src="/images/atlantic_ocean.png" alt=""></span>
 This is a [leetcode problem](https://leetcode.com/problems/pacific-atlantic-water-flow/).
 
-A better displayed version can be found [here](https://github.com/Chandler-Qian/chandler-qian.github.io/blob/master/_posts/2014-08-31-duis-in-purus.markdown).
+A better displayed version can be found [here](https://github.com/Chandler-Qian/chandler-qian.github.io/blob/master/_posts/2014-08-31-Pacific_atlantic_water_flow.markdown).
 
 ## Problem Discription
 
