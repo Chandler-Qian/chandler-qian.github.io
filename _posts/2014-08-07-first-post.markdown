@@ -7,6 +7,8 @@ permalink: /first-post.html
 <span class="image featured"><img src="/images/file_system.jpg" alt=""></span>
 This is a [leetcode problem](https://leetcode.com/problems/design-log-storage-system/).
 
+A better displayed version can be found [here](https://github.com/Chandler-Qian/chandler-qian.github.io/blob/master/_posts/2014-08-07-first-post.markdown).
+
 ## Problem Discription
 
 You are given several logs that each log contains a unique id and timestamp. Timestamp is a string that has the following format: <code>Year:Month:Day:Hour:Minute:Second</code>, for example, <code>2017:01:01:23:59:59</code>. All domains are zero-padded decimal numbers.
@@ -15,6 +17,7 @@ Design a log storage system to implement the following functions:
 
  - <code>void Put(int id, string timestamp)</code>: Given a log's unique
    id and timestamp, store the log in your storage system.
+   
  - <code>int[] Retrieve(String start, String end, String
    granularity)</code>: Return the id of logs whose timestamps are
    within the range from start to end. Start and end all have the same
@@ -31,7 +34,6 @@ Example:
 
  - Lowerbound (by **YEAR**): `2016:00:00:00:00:00`
  - Upperbound: `2016:12:31:23:59:59`
-
 
 ```
 class LogSystem {
@@ -102,4 +104,3 @@ class LogSystem {
  * List<Integer> param_2 = obj.retrieve(s,e,gra);
  */
  ```
-
