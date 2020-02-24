@@ -8,7 +8,7 @@ category: problems
 <span class="image featured"><img src="/images/snake_game.jpg" alt=""></span>
 This is a [leetcode problem](https://leetcode.com/problems/design-snake-game/).
 
-A better displayed version can be found [here](https://github.com/Chandler-Qian/chandler-qian.github.io/blob/master/_posts/2020-02-21-Snake_game.markdown).
+A better displayed version can be found [here](https://github.com/Chandler-Qian/chandler-qian.github.io/blob/master/_posts/2020-02-21-Snake_game.markdown.md).
 
 ## Problem Discription
 
